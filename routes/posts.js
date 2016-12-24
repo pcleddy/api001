@@ -16,12 +16,10 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 
-  var stmt = db.prepare("INSERT INTO posts (title, body) VALUES (?, ?)");
-  stmt.run(req.body.title, req.body.body);
-  stmt.finalize();
-  
-  res.json({ message: 'set post!' });
-
+  //var stmt = db.prepare("INSERT INTO posts (title, body) VALUES (?, ?)");
+  db.run("INSERT INTO posts (title, body) VALUES (?, ?)", req.body.title, req.body.body, function() {
+    res.json({ message: 'set post!' });
+  });
 });
 
 module.exports = router;
