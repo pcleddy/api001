@@ -15,13 +15,4 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res) {
-
-  //var stmt = db.prepare("INSERT INTO posts (title, body) VALUES (?, ?)");
-  db.run("INSERT INTO posts (title, body) VALUES (?, ?)", req.body.title, req.body.body, function(err) {
-    if (err) res.send(err);
-    res.json({ message: 'set post!' });
-  });
-});
-
 module.exports = router;

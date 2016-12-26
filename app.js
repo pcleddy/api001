@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var post = require('./routes/post');
 var posts = require('./routes/posts');
 
 var app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api', index);
+app.use('/api/post', post);
 app.use('/api/posts', posts);
 
 // catch 404 and forward to error handler
