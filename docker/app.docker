@@ -1,0 +1,12 @@
+FROM node
+
+WORKDIR /app
+COPY . /app
+
+RUN apt-get update
+RUN apt-get install gcc g++
+RUN npm install node-pre-gyp -g --unsafe-perm
+RUN npm install sqlite3 --build-from-source
+RUN npm install
+
+CMD ["bin/www"]
